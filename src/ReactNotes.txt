@@ -1,0 +1,53 @@
+import { useState, useEffect } from 'react';
+import './App.css';
+
+
+const App = () => {
+  //counter is the name of the state
+  // setCounter is the name of a setter function
+  const [counter, setCounter] = useState(0);
+
+  //useEffect allows us to do something after some sort of effect or event
+  //never modify state manually
+  useEffect(() => {
+    alert('counter has been changed to ' + counter)
+  }, [counter]);
+  //second paramater to a use effect is called a dependency array
+  //without the second paramter, it would constantly be running the function
+  //so the variable in the second paramater makes it so that, everytime the variable changes, the function will happen
+  // so for example, everytime the counter changes, the useEffect takes place
+
+  return (
+    <div className="App">
+      <h1>{counter}</h1>
+      <button onClick={() => setCounter((prevCount) => prevCount-1)}>-</button>
+      <button onClick={() => setCounter((prevCount) => prevCount+1)}>+</button>
+      <button onClick={() => setCounter(0)}>Reset</button>
+    </div>
+  );
+}
+
+export default App;
+
+  /* so the ? syntax will give like a placeholder
+          so if there is no name to show, it will use 'someone' as a placeholder
+          <h1> Hello {showName ? name : 'someone'}. </h1> 
+          so if there is no value set for variable name, it will give it the value of someone
+  */
+
+  /* States in React
+    state in react is a plain js object used by react to represent a 
+    piece of information about the component's current situation
+    managed by the component itself
+    whenever u call a function and it starts with use, we cal that a hook
+    when using a hook, you have access to a variable that will use 
+    the value of the currrent or previous state
+    naming convention is prevStateName
+    cannot acess states without using hooks
+  */
+
+  /* Events in React
+    events are actions that can be triggered as a result of a user action or
+    system generated event (such as mouse click)
+  */
+
